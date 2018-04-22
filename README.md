@@ -1,2 +1,0 @@
-# QRend
-QRCode Authentication App
