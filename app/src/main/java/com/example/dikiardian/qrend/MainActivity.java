@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Thread thread ;
     public final static int QRcodeWidth = 500 ;
     Bitmap bitmap ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

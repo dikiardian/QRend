@@ -10,15 +10,14 @@ public class User {
     private String fullname;
     private String email;
     private String password;
-    private Event[] events;
 
-    public User(int userId, String username, String fullname, String email, String password, Event[] events) {
+
+    public User(int userId, String username, String fullname, String email, String password) {
         this.userId = userId;
         this.username = username;
         this.fullname = fullname;
         this.email = email;
         this.password = password;
-        this.events = events;
     }
 
     public int getUserId() {
@@ -59,13 +58,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Event[] getEvents() {
-        return events;
-    }
-
-    public void setEvents(Event[] events) {
-        this.events = events;
     }
 }
