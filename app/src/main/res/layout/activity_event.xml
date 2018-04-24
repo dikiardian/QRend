@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dikiardian.qrend.EventActivity">
+
+    <TextView
+        android:id="@+id/pilih_metode_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="71dp"
+        android:text="Pilih Metode Stop Event"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupMetode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp"
+        android:checkedButton="@+id/radioButtonManual">
+
+        <RadioButton
+            android:id="@+id/radioButtonManual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="Manual"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/radioButtonOtomatis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Otomatis"
+            android:textSize="18sp" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/durasi_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="120dp"
+        android:layout_toLeftOf="@+id/durasi"
+        android:layout_toStartOf="@+id/durasi"
+        android:layout_weight="1"
+        android:text="Durasi :"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:visibility="invisible" />
+
+    <Spinner
+        android:id="@+id/durasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="60dp"
+        android:addStatesFromChildren="false"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/buttonMulai"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="150dp"
+        android:background="@color/colorPrimary"
+        android:text="MULAI EVENT"
+        android:textColor="@android:color/white" />
+</RelativeLayout>

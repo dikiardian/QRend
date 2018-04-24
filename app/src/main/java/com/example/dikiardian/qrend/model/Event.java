@@ -7,20 +7,36 @@ package com.example.dikiardian.qrend.model;
 public class Event {
     private int eventId;
     private String eventName;
+    private String eventSubname;
     private User author;
     private User[] participants;
     private Code[] codeList;
     private boolean isActive;
     private double duration;
 
-    public Event(int eventId, String eventName, User author, User[] participants, Code[] codeList, boolean isActive, double duration) {
+    public Event(int eventId, String eventName, String eventSubname) {
         this.eventId = eventId;
         this.eventName = eventName;
+        this.eventSubname = eventSubname;
+    }
+
+    public Event(int eventId, String eventName, String eventSubname, User author, User[] participants, Code[] codeList, boolean isActive, double duration) {
+        this.eventId = eventId;
+        this.eventName = eventName;
+        this.eventSubname = eventSubname;
         this.author = author;
         this.participants = participants;
         this.codeList = codeList;
         this.isActive = isActive;
         this.duration = duration;
+    }
+
+    public String getEventSubname() {
+        return eventSubname;
+    }
+
+    public void setEventSubname(String eventSubname) {
+        this.eventSubname = eventSubname;
     }
 
     public int getEventId() {

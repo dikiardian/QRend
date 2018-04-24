@@ -13,18 +13,30 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.example.dikiardian.qrend.model.Event;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class HomeActivity extends AppCompatActivity {
 
     public static final String TAG = HomeActivity.class.getSimpleName();
     private String username;
     private int idUser;
+
+    private ListView listEvent;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +47,28 @@ public class HomeActivity extends AppCompatActivity {
         username = prefs.getString("username", "");
         idUser = prefs.getInt("idUser", 0);
 
-        //get event list
+        listEvent = findViewById(R.id.list_event);
+        progressBar = findViewById(R.id.loading_list_event);
+
+//        get event list
         GetEventList getEventList = new GetEventList();
         getEventList.execute(idUser);
+
+        listEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+
+                Event event = (Event) parent.getItemAtPosition(position);
+
+                Intent intent = new Intent(HomeActivity.this, EventActivity.class);
+
+                intent.putExtra("eventId", event.getEventId());
+                intent.putExtra("eventName", event.getEventName());
+                intent.putExtra("eventSubname", event.getEventSubname());
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -127,7 +158,19 @@ public class HomeActivity extends AppCompatActivity {
                     Log.d(TAG, data.toString());
 
                     //update list
+                    List<Event> eventList = new ArrayList<>();
 
+                    for(int i = 0; i < data.length(); i++) {
+                        JSONObject datum = data.getJSONObject(i);
+                        eventList.add(new Event(datum.getInt("id_event"), datum.getString("event_name"), datum.getString("event_subname")));
+                    }
+
+                    ListEventAdapter adapter = new ListEventAdapter(HomeActivity.this, R.layout.event_list_layout, eventList);
+
+                    listEvent.setAdapter(adapter);
+
+                    listEvent.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.INVISIBLE);
 
                 } else {
                     //status == 0
